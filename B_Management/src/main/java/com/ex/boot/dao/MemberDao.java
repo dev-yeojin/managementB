@@ -1,13 +1,15 @@
 package com.ex.boot.dao;
 
-import org.apache.ibatis.session.SqlSessionFactory;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
-@Repository("MemberDao")
-public class MemberDao {
+import com.ex.boot.vo.Member;
+
+
+public interface MemberDao {
 	
-	private SqlSessionFactory sqlSessionFactory;
-	
+	public List<Member> getMemberList();
 
 	
 }

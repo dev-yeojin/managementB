@@ -2,13 +2,17 @@ package com.ex.boot.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ex.boot.dao.MemberDao;
 import com.ex.boot.vo.Member;
 
-@Service("MemberService")
+@Service("memberService")
 public class MemberServiceImpl implements MemberService {
 	
+	@Autowired
+	MemberDao memberDao;
 	
 	@Override
 	public boolean existMember(String userId, String pwd) {
@@ -18,8 +22,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<Member> getMemberList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Member> memberList = memberDao.getMemberList(); 
+		return memberList;
 	}
 
 	@Override

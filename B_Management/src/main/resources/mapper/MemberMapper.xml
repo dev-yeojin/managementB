@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="member">
+<mapper namespace="mapper.MemberMapper">
 
-	<select id="existMember" parameterType="java.util.Map" resultType="com.ex.vo.member">
+	<select id="existMember" parameterType="java.util.Map" resultType="com.ex.boot.vo.Member">
 		SELECT 
 			COUNT(*)
 		FROM
@@ -16,23 +16,23 @@
 			pwd = #{pwd}
 	</select>
 	
-	<select id="selectMember" parameterType="String" resultType="com.ex.vo.member">
+	<select id="selectMember" parameterType="String" resultType="com.ex.boot.vo.Member">
 		SELECT 
 			*
 		FROM
 			member
 		WHERE 
 			userId = #{userId}
-	</select>
+	</select> 
 		
-	<select id="selectMemberList" resultType="com.ex.vo.member">
-		SELECT 
+	<select id="selectMemberList" resultType="com.ex.boot.vo.Member">
+		SELECT
 			*
 		FROM
 			member
 	</select>
 	
-	<insert id="insertMember" parameterType="com.ex.vo.member">
+	<insert id="insertMember" parameterType="com.ex.boot.vo.Member">
 		INSERT 
 		INTO
 			member
@@ -55,7 +55,7 @@
 			)
 	</insert>
 	
-	<update id="updateMember" parameterType="com.ex.vo.member">
+	<update id="updateMember" parameterType="com.ex.boot.vo.Member">
 		UPDATE 
 			member
 		SET
