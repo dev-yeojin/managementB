@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<select id="existMember" parameterType="java.util.Map" resultType="com.ex.vo.member">
+		SELECT 
+			COUNT(*)
+		FROM
+			member
+		WHERE
+			0 = 0
+		AND
+			userId = #{userId}
+		AND 
+			pwd = #{pwd}
+	</select>
+	
+	<select id="selectMember" parameterType="String" resultType="com.ex.vo.member">
+		SELECT 
+			*
+		FROM
+			member
+		WHERE 
+			userId = #{userId}
+	</select>
+		
+	<select id="selectMemberList" resultType="com.ex.vo.member">
+		SELECT 
+			*
+		FROM
+			member
+	</select>
+	
+	<insert id="insertMember" parameterType="com.ex.vo.member">
+		INSERT 
+		INTO
+			member
+			(
+			idx
+			,userId
+			,pwd
+			,name
+			,auth
+			,createdDate
+			)
+		VALUES
+			(
+			(SELECT MAX(idx)+1 FROM MEMBER m)
+			,#{userId}
+			,#{pwd}
+			,#{name}
+			,#{auth}
+			,now()
+			)
+	</insert>
+	
+	<update id="updateMember" parameterType="com.ex.vo.member">
+		UPDATE 
+			member
+		SET
+			idx = #{idx}
+			,pwd = #{pwd}
+			,name = #{name}
+			,auth = #{auth}
+			,updateDate = now()
+		WHERE
+			userId = #{userId}
+	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		DELETE
+		FROM
+			member
+		WHERE
+			userId = #{userId}
+	</delete>
+</mapper>
