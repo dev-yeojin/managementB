@@ -2,17 +2,28 @@
 spring:
   profiles: 
     active: dev
-  datasource:
-        url: jdbc:mysql://127.0.0.1:3306/mservice?useUnicode=true&characterEncoding=UTF-8
-        username: root 
-        password: 1234
-        driver-class-name: com.mysql.jdbc.Driver
-  
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/jsp/
+#      suffix: .jsp
+
+      
 # [Context 설정]
 server:
   port: 8181
   contextPath: /
   jsp-servlet:
-      init-parameters:
-        development: true
+    init-parameters:
+      development: true
 
+#[DB 설정]      
+datasource:
+  mservice:
+    driver-class-name: com.mysql.jdbc.Driver
+    #url: jdbc:mysql://127.0.0.1:3306/mservice?useUnicode=true&characterEncoding=UTF-8
+    jdbc-url: jdbc:mysql://127.0.0.1:3306/mservice?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 1234
+    validation-query: select 1
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 3600000         

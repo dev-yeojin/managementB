@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mapper.MemberMapper">
+<mapper namespace="com.ex.boot.mapper.MemberMapper">
 
-	<select id="existMember" parameterType="java.util.Map" resultType="com.ex.boot.vo.Member">
+	<select id="existMember" parameterType="java.util.Map" resultType="int">
 		SELECT 
 			COUNT(*)
 		FROM
@@ -75,4 +75,14 @@
 		WHERE
 			userId = #{userId}
 	</delete>
+	
+	<update id="updateUserAuth" parameterType="java.util.Map">
+		UPDATE 
+			member
+		SET
+			auth = #{auth}
+			,updateDate = now()
+		WHERE
+			userId = #{userId}
+	</update>
 </mapper>
