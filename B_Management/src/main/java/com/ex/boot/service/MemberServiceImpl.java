@@ -6,11 +6,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ex.boot.dao.MemberDao;
 import com.ex.boot.vo.Member;
 
 @Service("memberService")
+@Transactional("firstTransactionManager")
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
@@ -68,4 +70,6 @@ public class MemberServiceImpl implements MemberService {
 		
 		memberDao.updateUserAuth(authInfo);		
 	}
+
+
 }
