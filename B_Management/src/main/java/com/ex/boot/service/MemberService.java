@@ -1,18 +1,20 @@
 package com.ex.boot.service;
 
-import java.util.*;
+import java.util.List;
 
 import com.ex.boot.vo.Member;
 
 public interface MemberService {
 
-	public boolean existMember(String userId, String pwd);
 	
-	public List<Member> getMemberList();
-	public Member getMember(String userId);
-	public void createMember(Member member);
-	public void updateMember(Member member);
-	public void deleteMember(String userId);
+	public boolean existUser(String userId) throws Exception;
+	public boolean checkPassword(String userId, String pwd) throws Exception;
 	
-	public void updateUserAuth(String userId, int auth);
+	public List<Member> getMemberList() throws Exception;
+	public Member getMember(String userId) throws Exception;
+	public void createMember(Member member) throws Exception;
+	public void updateMember(Member member) throws Exception;
+	public void deleteMember(String userId) throws Exception;
+	
+	public void updateUserAuth(String userId, int auth) throws Exception;
 }

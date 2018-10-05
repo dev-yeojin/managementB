@@ -3,7 +3,16 @@
 
 <mapper namespace="com.ex.boot.mapper.MemberMapper">
 
-	<select id="existMember" parameterType="java.util.Map" resultType="int">
+	<select id="existUser" parameterType="String" resultType="int">
+		SELECT 
+			COUNT(*)
+		FROM
+			member
+		WHERE
+			userId = #{userId}
+	</select>
+	
+	<select id="checkPassword" parameterType="java.util.Map" resultType="int">
 		SELECT 
 			COUNT(*)
 		FROM
@@ -37,8 +46,7 @@
 		INTO
 			member
 			(
-			idx
-			,userId
+			userId
 			,pwd
 			,name
 			,auth
@@ -46,8 +54,7 @@
 			)
 		VALUES
 			(
-			(SELECT MAX(idx)+1 FROM MEMBER m)
-			,#{userId}
+			#{userId}
 			,#{pwd}
 			,#{name}
 			,#{auth}
@@ -59,10 +66,8 @@
 		UPDATE 
 			member
 		SET
-			idx = #{idx}
-			,pwd = #{pwd}
+			pwd = #{pwd}
 			,name = #{name}
-			,auth = #{auth}
 			,updateDate = now()
 		WHERE
 			userId = #{userId}
@@ -85,4 +90,13 @@
 		WHERE
 			userId = #{userId}
 	</update>
+	
+	
+	<delete id="deleteTest" parameterType="String">
+		delete
+		from 
+			member
+		where
+			uuid = #{userId}
+	</delete>
 </mapper>
