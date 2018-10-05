@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS `member` (
+  `userId` varchar(200) NOT NULL,
+  `pwd` varchar(200) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `auth` int(11) NOT NULL,
+  `createdDate` datetime NOT NULL COMMENT '회원 가입 날짜',
+  `updateDate` datetime DEFAULT NULL COMMENT '회원 수정 날짜',
+  PRIMARY KEY (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
